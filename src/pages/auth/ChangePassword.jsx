@@ -22,9 +22,8 @@ const ChangePassword = () => {
     
     // Esto nofuncionó y el loco se hizo el larry.
     // Tiene que ver con el useNavigate
-    if(token !== "qwwss1231232"){
-      navigate("/");
-    }
+    console.log(token);
+    
 
     const handleShowPassword = () => {
       setShowPassword(!showPassword);
@@ -32,6 +31,10 @@ const ChangePassword = () => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
+
+      if(token !== "qwwss1231232"){
+        navigate("/");
+      }
 
       if([password, confirmPassword].includes("")) {
         toast.error("Todos los campos son obligatorios", {
@@ -106,7 +109,7 @@ const ChangePassword = () => {
           )}          
         </div>
         <div>
-          <button className='mt-6 bg-sky-600 text-white w-full py-2 px-6 rounded-lg hover:scale-105 transition-all'>Actualizar</button>
+          <button type='submit' className='mt-6 bg-sky-600 text-white w-full py-2 px-6 rounded-lg hover:scale-105 transition-all'>Actualizar</button>
         </div>
       </form>
     </div>
