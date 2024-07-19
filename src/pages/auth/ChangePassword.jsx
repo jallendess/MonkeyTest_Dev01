@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { 
   RiMailLine, 
@@ -19,11 +19,17 @@ const ChangePassword = () => {
     const navigate = useNavigate();
 
     const { token } = useParams();
+
+    useEffect(() => {
+      if(token !== "qwwss1231232"){
+        navigate("/");
+      }
+    }, [token, navigate]); 
+
+    // Esto no funcionó y el loco se hizo el larry.
     
-    // Esto nofuncionó y el loco se hizo el larry.
     // Tiene que ver con el useNavigate
     console.log(token);
-    
 
     const handleShowPassword = () => {
       setShowPassword(!showPassword);
@@ -32,9 +38,6 @@ const ChangePassword = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
 
-      if(token !== "qwwss1231232"){
-        navigate("/");
-      }
 
       if([password, confirmPassword].includes("")) {
         toast.error("Todos los campos son obligatorios", {
